@@ -1,10 +1,8 @@
-on post-fs-data
-service anxfilecheck /system/bin/anxfilecheck.sh
-    class main
+service vendor.anxfilecheck /vendor/bin/anxfilecheck.sh
+    class core
     user root
     group root
     oneshot
-    disabled
 
-on property:sys.boot_completed=1
-    start anxfilecheck
+on post-fs-data
+    start vendor.anxfilecheck
